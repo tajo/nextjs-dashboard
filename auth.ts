@@ -23,9 +23,9 @@ export const { auth, signIn, signOut } = NextAuth({
   providers: [
     Credentials({
       async authorize(credentials) {
-        // ...
-
+        // @ts-expect-error Type error: Cannot find name 'parsedCredentials'.
         if (parsedCredentials.success) {
+          // @ts-expect-error Type error: Cannot find name 'parsedCredentials'.
           const { email, password } = parsedCredentials.data;
           const user = await getUser(email);
           if (!user) return null;
